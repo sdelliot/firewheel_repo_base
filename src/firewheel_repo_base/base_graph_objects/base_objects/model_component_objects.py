@@ -1591,6 +1591,9 @@ class RunHostExecutableScheduleEntry(ScheduleEntry):
         self.set_executable(program, arguments)
         self.on_host = True
 
+        if program != "minimega" and not os.path.isabs(program):
+            self.add_file(program, program, executable=True)
+
 
 class FileTransferScheduleEntry(ScheduleEntry):
     """
